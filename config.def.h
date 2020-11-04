@@ -189,8 +189,8 @@ static uint forcemousemod = ShiftMask;
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ XK_NO_MOD,           	Button4, kscrollup,      {.i = -1} },
-	{ XK_NO_MOD,           	Button5, kscrolldown,    {.i = -1} },
+	{ XK_NO_MOD,           	Button4, kscrollup,      {.i = 1} },
+	{ XK_NO_MOD,           	Button5, kscrolldown,    {.i = 1} },
 	{ MODKEY,           	Button4, zoom,      {.f = +1} },
 	{ MODKEY,           	Button5, zoom,      {.f = -1} },
 };
@@ -206,6 +206,8 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_Home,        zoomreset,      {.f =  0} },
 	{ XK_NO_MOD,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ XK_NO_MOD,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,            	XK_Up,     		kscrollup,      {.i = 1} },
+	{ MODKEY,            	XK_Down,   		kscrolldown,    {.i = 1} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Return,      newterm,        {.i =  0} },
 	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
