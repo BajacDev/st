@@ -2133,7 +2133,7 @@ init_defaultbg_colorname()
 {
 	static char str[8];
 	srand(time_in_milliseconds());
-	int colorhex = rand() & 0b0101100;
+	int colorhex = rand() & 0x1f;
 	snprintf(str, LEN(str), "#%02x%02x%02x", colorhex, colorhex, colorhex);
 	colorname[defaultbg] = str;
 }
