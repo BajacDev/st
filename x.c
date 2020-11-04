@@ -2117,9 +2117,32 @@ usage(void)
 	    " [stty_args ...]\n", argv0, argv0);
 }
 
+#include<sys/time.h>
+
+long long 
+time_in_milliseconds() 
+{
+    struct timeval tv;
+
+    gettimeofday(&tv,NULL);
+    return (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
+}
+
+void
+init_defaultbg_colorname()
+{
+	static char str[8];
+	srand(time_in_milliseconds());
+	int colorhex = rand() & 0b0101100;
+	snprintf(str, LEN(str), "#%02x%02x%02x", colorhex, colorhex, colorhex);
+	colorname[defaultbg] = str;
+}
+
 int
 main(int argc, char *argv[])
 {
+	init_defaultbg_colorname();
+
 	xw.l = xw.t = 0;
 	xw.isfixed = False;
 	xsetcursor(cursorshape);
