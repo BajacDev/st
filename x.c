@@ -2119,20 +2119,11 @@ usage(void)
 
 #include<sys/time.h>
 
-long long 
-time_in_milliseconds() 
-{
-    struct timeval tv;
-
-    gettimeofday(&tv,NULL);
-    return (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
-}
-
 void
 init_defaultbg_colorname()
 {
+	srand(time(0) ^ getpid());
 	static char str[8];
-	srand(time_in_milliseconds());
 	int colorhex = rand() & 0x1f;
 	snprintf(str, LEN(str), "#%02x%02x%02x", colorhex, colorhex, colorhex);
 	colorname[defaultbg] = str;
