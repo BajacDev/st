@@ -2120,19 +2120,21 @@ usage(void)
 #include<sys/time.h>
 
 void
-init_defaultbg_colorname()
+init_defaultbg_coloralpha()
 {
 	srand(time(0) ^ getpid());
 	static char str[8];
 	int colorhex = rand() & 0x1f;
 	snprintf(str, LEN(str), "#%02x%02x%02x", colorhex, colorhex, colorhex);
 	colorname[defaultbg] = str;
+	float possible_alpha[] = { 0.75, 0.8, 0.85, 0.9 };
+	alpha = possible_alpha[rand() % LEN(possible_alpha)];
 }
 
 int
 main(int argc, char *argv[])
 {
-	init_defaultbg_colorname();
+	init_defaultbg_coloralpha();
 
 	xw.l = xw.t = 0;
 	xw.isfixed = False;
